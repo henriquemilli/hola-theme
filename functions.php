@@ -11,6 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'HOLA_ELEMENTOR_VERSION', '0.0.1' );
 
+//updater
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/henriquemilli/hola-theme',
+	__FILE__,
+	'unique-plugin-or-theme-slug'
+);
+$myUpdateChecker->setBranch('main');
+//$myUpdateChecker->setAuthentication('your-token-here');
+
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
 }

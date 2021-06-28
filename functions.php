@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HOLA_ELEMENTOR_VERSION', '0.0.1' );
+define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' );
 
 //updater
 require 'updater/plugin-update-checker.php';

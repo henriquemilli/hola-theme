@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'HOLA_ELEMENTOR_VERSION', '0.0.1' );
 
 //updater
-require 'plugin-update-checker/plugin-update-checker.php';
+require 'updater/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/henriquemilli/hola-theme',
 	__FILE__,

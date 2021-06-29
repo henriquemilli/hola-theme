@@ -19,7 +19,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'hola-theme'
 );
 $myUpdateChecker->setBranch('main');
-//$myUpdateChecker->setAuthentication('your-token-here');
+$myUpdateChecker->setAuthentication('your-token-here');
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
@@ -34,7 +34,7 @@ if ( ! function_exists( 'hola_elementor_setup' ) ) {
 	function hola_elementor_setup() {
 		$hook_result = apply_filters_deprecated( 'elementor_hola_theme_load_textdomain', [ true ], '2.0', 'hola_elementor_load_textdomain' );
 		if ( apply_filters( 'hola_elementor_load_textdomain', $hook_result ) ) {
-			load_theme_textdomain( 'hola-elementor', get_stylesheet_directory() . '/languages' );
+			load_theme_textdomain( 'hola-elementor', get_template_directory() . '/languages' );
 		}
 
 		$hook_result = apply_filters_deprecated( 'elementor_hola_theme_register_menus', [ true ], '2.0', 'hola_elementor_register_menus' );
@@ -110,7 +110,7 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 		if ( apply_filters( 'hola_elementor_enqueue_style', $enqueue_basic_style ) ) {
 			wp_enqueue_style(
 				'hola-elementor',
-				get_stylesheet_directory_uri() . '/style' . $min_suffix . '.css',
+				get_template_directory_uri() . '/style' . $min_suffix . '.css',
 				[],
 				HOLA_ELEMENTOR_VERSION
 			);
@@ -119,7 +119,7 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 		if ( apply_filters( 'hola_elementor_enqueue_theme_style', true ) ) {
 			wp_enqueue_style(
 				'hola-elementor-theme-style',
-				get_stylesheet_directory_uri() . '/theme' . $min_suffix . '.css',
+				get_template_directory_uri() . '/theme' . $min_suffix . '.css',
 				[],
 				HOLA_ELEMENTOR_VERSION
 			);

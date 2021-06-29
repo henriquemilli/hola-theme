@@ -16,7 +16,7 @@ require 'updater/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/henriquemilli/hola-theme',
 	__FILE__,
-	'unique-plugin-or-theme-slug'
+	'hola-theme'
 );
 $myUpdateChecker->setBranch('main');
 //$myUpdateChecker->setAuthentication('your-token-here');

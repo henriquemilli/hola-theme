@@ -193,9 +193,10 @@ sup {
  */
 
 img {
+	width: 100%; //fixes behaviour of svgs and webps
 	border-style: none;
 	height: auto;
-	max-width: 100%;
+	max-width: 100%
 }
 
 /* Interactive

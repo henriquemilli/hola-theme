@@ -4,7 +4,7 @@
  * Description: Hola! An enchanced dev theme for elementor
  * Author: Henrique Milli
  * Author URL: http://henriquemilli.com
- * Version: 0.0.4
+ * Version: 0.0.5
  * Requires at least: 4.7
  * Tested up to: 5.6
  * Requires PHP: 5.6
@@ -205,6 +205,7 @@ sup {
  * Remove the border on images inside links in IE 10.
  */
 img {
+  width: 100%;
   border-style: none;
   height: auto;
   max-width: 100%;

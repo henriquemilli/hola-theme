@@ -4,7 +4,7 @@
  * Description: Hola! An enchanced dev theme for elementor
  * Author: Henrique Milli
  * Author URL: http://henriquemilli.com
- * Version: 0.0.3
+ * Version: 0.0.4
  * Requires at least: 4.7
  * Tested up to: 5.6
  * Requires PHP: 5.6
@@ -12,12 +12,6 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: hola-elementor
  */
-/*eg:@font-face
-	font-family: "Poppins"
-	src: url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype")
-	font-weight: $light
-	font-style: normal
-	font-display: swap; */
 html {
   line-height: 1.15;
   /* 1 */
@@ -650,20 +644,4 @@ li {
   vertical-align: baseline;
   background: transparent;
 }
-
-/**
- * Returns the measure in relation to screen
- * expressed in percentage
- */
-/**
- * Returns width in relation to screen
- * expressed in vw
- */
-/**
- * Returns height in relation to screen
- * expressed in vw, vh only made a mess in my tests
- */
-/**
- * Returns givven screen size minus correction variable
- */
 /*# sourceMappingURL=style.css.map */

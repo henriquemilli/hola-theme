@@ -9,7 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' );
+//define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' );
+define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme()->get('Version') );
 
 //updater
 require 'updater/plugin-update-checker.php';
@@ -116,14 +117,6 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 			);
 		}
 
-		if ( apply_filters( 'hola_elementor_enqueue_theme_style', true ) ) {
-			wp_enqueue_style(
-				'hola-elementor-theme-style',
-				get_template_directory_uri() . '/theme' . $min_suffix . '.css',
-				[],
-				HOLA_ELEMENTOR_VERSION
-			);
-		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'hola_elementor_scripts_styles' );

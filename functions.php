@@ -19,7 +19,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__,
 	'hola-theme'
 );
-$myUpdateChecker->setBranch('main');
+$myUpdateChecker->setBranch('master');
 //$myUpdateChecker->setAuthentication('your-token-here');
 
 if ( ! isset( $content_width ) ) {

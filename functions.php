@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-//define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' );
+//define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' ); //dioporco se devo stare li scriverlo a mano
 define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme()->get('Version') );
 
 //updater
@@ -20,7 +20,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'hola-theme'
 );
 $myUpdateChecker->setBranch('main');
-$myUpdateChecker->setAuthentication('your-token-here');
+//$myUpdateChecker->setAuthentication('your-token-here');
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
@@ -116,6 +116,13 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 				HOLA_ELEMENTOR_VERSION
 			);
 		}
+		
+		wp_enqueue_script(
+			'hola_elementor_webp_polyfill',
+			get_template_directory_uri() . '/assets/js/' . 'webpinjector.js',
+			[],
+			HOLA_ELEMENTOR_VERSION
+		);
 
 	}
 }

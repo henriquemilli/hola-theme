@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-//define( 'HOLA_ELEMENTOR_VERSION', '0.0.2' ); //dioporco se devo stare li scriverlo a mano
-define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme()->get('Version') );
+define( 'HOLA_ELEMENTOR_VERSION', '0.0.7' ); //dioporco se devo stare li scriverlo a mano
+//define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme()->get('Version') );
 
 //updater
 require 'updater/plugin-update-checker.php';

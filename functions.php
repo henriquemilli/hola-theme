@@ -9,8 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HOLA_ELEMENTOR_VERSION', '0.0.7' ); //dioporco se devo stare li scriverlo a mano
-//define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme()->get('Version') );
+//define( 'HOLA_ELEMENTOR_VERSION', '0.0.7' );
+define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme('hola-theme')->get('Version') );
+
+//settings page
+if( is_admin() ) {
+	include_once 'settings.php';
+}
 
 //updater
 require 'updater/plugin-update-checker.php';
@@ -117,12 +122,14 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 			);
 		}
 		
-		wp_enqueue_script(
-			'hola_elementor_webp_polyfill',
-			get_template_directory_uri() . '/assets/js/' . 'webpinjector.js',
-			[],
-			HOLA_ELEMENTOR_VERSION
-		);
+		if ( get_option( 'webp' ) ) {
+			wp_enqueue_script(
+				'hola_elementor_webp_polyfill',
+				get_template_directory_uri() . '/assets/js/mod' . 'webpinjector.min.js',
+				[],
+				HOLA_ELEMENTOR_VERSION
+			);
+		}
 
 	}
 }

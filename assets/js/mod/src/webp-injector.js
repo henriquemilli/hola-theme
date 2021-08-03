@@ -1,10 +1,12 @@
 /**
  * selective webp polyfill loader
+ * won't penalise browser that have support
  */
+
 const origin = window.location.origin;
-const testWebpUrl = origin + '/wp-content/themes/hola-theme/assets/img/test.webp';
-const webBundleUrl = origin + '/wp-content/themes/hola-theme/assets/js/webp-hero.bundle.js';
-const webPolyfillUrl = origin + '/wp-content/themes/hola-theme/assets/js/polyfills.js';
+const testWebpUrl = origin + '/wp-content/themes/hola-theme/assets/js/other/test.webp';
+const webBundleUrl = origin + '/wp-content/themes/hola-theme/assets/js/lib/webp-hero.bundle.js';
+const webPolyfillUrl = origin + '/wp-content/themes/hola-theme/assets/js/lib/polyfills.js';
 
 (function() {
     var img = new Image();
@@ -38,4 +40,4 @@ function injectWebpSupport() {
     bundle.src = webBundleUrl;
     polyfill.src = webPolyfillUrl;
     document.head.appendChild(bundle);
-}
+};

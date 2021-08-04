@@ -16,7 +16,7 @@ class Hola_Settings_Page {
 		$slug = 'Hola';
 		$callback = array($this, 'wph_settings_content');
         $icon = 'dashicons-lightbulb';
-		$position = 2;
+		$position = 1;
 		add_menu_page($page_title, $menu_title, $capability, $slug, $callback, $icon, $position);
 		
 	}
@@ -36,16 +36,16 @@ class Hola_Settings_Page {
 	}
 
 	public function wph_setup_sections() {
-		add_settings_section( 'Hola_section', 'aprender a dudar es aprender a pensar', array(), 'Hola' );
+		add_settings_section( 'Hola_section', 'Aprender a dudar es aprender a pensar', array(), 'Hola' );
 	}
 
 	public function wph_setup_fields() {
 		$fields = array(
                     array(
                         'section' => 'Hola_section',
-                        'label' => 'webp selective polyfill',
+                        'label' => 'webp polyfill',
                         'id' => 'webp',
-                        'desc' => 'Small script to check support for webp images, polyfills junk browsers only',
+                        'desc' => 'Light script that polyfills junk browsers only',
                         'type' => 'checkbox',
                     )
 		);

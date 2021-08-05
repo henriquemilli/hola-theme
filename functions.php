@@ -123,7 +123,7 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 		if ( get_option( 'webp' ) ) {
 			wp_enqueue_script(
 				'hola_elementor_webp_polyfill',
-				get_template_directory_uri() . '/assets/js/mod/' . 'webpinjector.min.js',
+				get_template_directory_uri() . '/assets/js/mod/' . 'webp-injector.min.js',
 				[],
 				HOLA_ELEMENTOR_VERSION
 			);

@@ -4,25 +4,26 @@
  */
 
 const origin = window.location.origin;
-const testWebpUrl = origin + '/wp-content/themes/hola-theme/assets/js/other/test.webp';
+const testImg = 'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoCAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==';
 const webBundleUrl = origin + '/wp-content/themes/hola-theme/assets/js/lib/webp-hero.bundle.js';
 const webPolyfillUrl = origin + '/wp-content/themes/hola-theme/assets/js/lib/polyfills.js';
 
-(function() {
+(function () {
     var img = new Image();
 
-    img.onload = function() {
-        support = !!(img.height > 0 && img.width > 0) 
-        if ( ! support ) {
+    img.onload = () => {
+        support = !!(img.width == 2 && img.height == 1)
+        if (!support) {
             injectWebpSupport();
-        };
+
+        } else {};
     };
 
-    img.onerror = function() {
+    img.onerror = () => {
         injectWebpSupport();
     };
-    
-    img.src = testWebpUrl;
+
+    img.src = testImg;
 })();
 
 function injectWebpSupport() {
@@ -32,12 +33,20 @@ function injectWebpSupport() {
     bundle.onload = function () {
         document.head.appendChild(polyfill);
     };
-    polyfill.onload = function() {
+    polyfill.onload = function () {
         var webpMachine = new webpHero.WebpMachine();
         webpMachine.polyfillDocument();
+        rmSrcset();
     };
 
     bundle.src = webBundleUrl;
     polyfill.src = webPolyfillUrl;
     document.head.appendChild(bundle);
+};
+
+function rmSrcset() {
+    img = document.getElementsByTagName('img');
+    for (let i = 0; i < img.length; i++) {
+        img[i].removeAttribute('srcset');
+    };
 };

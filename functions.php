@@ -125,7 +125,8 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 				'hola_elementor_webp_polyfill',
 				get_template_directory_uri() . '/assets/js/mod/' . 'webp-injector.min.js',
 				[],
-				HOLA_ELEMENTOR_VERSION
+				HOLA_ELEMENTOR_VERSION,
+				true //in footer
 			);
 		}
 

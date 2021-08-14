@@ -43,9 +43,16 @@ class Hola_Settings_Page {
 		$fields = array(
                     array(
                         'section' => 'Hola_section',
-                        'label' => 'webp polyfill',
+                        'label' => 'Webp polyfill',
                         'id' => 'webp',
                         'desc' => 'Light script that polyfills junk browsers only',
+                        'type' => 'checkbox',
+					),
+					array(
+                        'section' => 'Hola_section',
+                        'label' => 'Dequeue woo',
+                        'id' => 'deq-woo',
+                        'desc' => 'Dequeues woocommerce styles',
                         'type' => 'checkbox',
                     )
 		);

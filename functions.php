@@ -15,7 +15,10 @@ if( is_admin() ) {
 
 define( 'HOLA_ELEMENTOR_VERSION', wp_get_theme('hola-theme')->get('Version') );
 
-//updater
+
+/**
+ * Updater
+ */
 require 'updater/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/henriquemilli/hola-theme',
@@ -25,9 +28,13 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 $myUpdateChecker->setBranch('master');
 //$myUpdateChecker->setAuthentication('your-token-here');
 
+
+
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
 }
+
+
 
 if ( ! function_exists( 'hola_elementor_setup' ) ) {
 	/**
@@ -101,6 +108,8 @@ if ( ! function_exists( 'hola_elementor_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'hola_elementor_setup' );
 
+
+
 if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 	/**
 	 * Theme Scripts & Styles.
@@ -129,10 +138,19 @@ if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 				true //in footer
 			);
 		}
-
+		
 	}
 }
 add_action( 'wp_enqueue_scripts', 'hola_elementor_scripts_styles' );
+
+
+/**
+ * Dequeue woo styles
+ */
+if ( get_option( 'deq-woo' ) ) {
+	add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+}
+
 
 if ( ! function_exists( 'hola_elementor_register_elementor_locations' ) ) {
 	/**
@@ -150,6 +168,8 @@ if ( ! function_exists( 'hola_elementor_register_elementor_locations' ) ) {
 	}
 }
 add_action( 'elementor/theme/register_locations', 'hola_elementor_register_elementor_locations' );
+
+
 
 if ( ! function_exists( 'hola_elementor_content_width' ) ) {
 	/**
@@ -183,6 +203,7 @@ if ( ! function_exists( 'hola_elementor_check_hide_title' ) ) {
 	}
 }
 add_filter( 'hola_elementor_page_title', 'hola_elementor_check_hide_title' );
+
 
 /**
  * Wrapper function to deal with backwards compatibility.

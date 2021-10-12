@@ -84,9 +84,9 @@ class Hola_Settings_Page {
                     ),
 					array(
                         'section' => 'elementor_section',
-                        'label' => 'Filter eicons',
+                        'label' => 'Dequeue eicons',
                         'id' => 'no_e_eicons',
-                        'desc' => 'Filters eicons from elementor',
+                        'desc' => 'Dequeues eicons from elementor',
                         'type' => 'checkbox',
                     )
 		);

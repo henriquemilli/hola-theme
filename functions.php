@@ -161,13 +161,13 @@ function hola_filter_font_awesome() {
 
 
 /**
- * filter elementor eicons
+ * dequeue elementor eicons
  */
-function hola_remove_default_stylesheet() {
+function hola_remove_eicons() {
 	if ( get_option( 'no_e_eicons' ) ) { 
-		wp_deregister_style( 'elementor-icons' ); 
+		wp_dequeue_style( ‘elementor-icons’ ); 
 	}
-} add_action( 'wp_enqueue_scripts', 'hola_remove_default_stylesheet', 20 ); 
+} add_action( ‘elementor/frontend/after_enqueue_styles’, 'hola_remove_eicons', 20 ); 
 
 
 /**

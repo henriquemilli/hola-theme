@@ -109,7 +109,6 @@ if ( ! function_exists( 'hola_elementor_setup' ) ) {
 add_action( 'after_setup_theme', 'hola_elementor_setup' );
 
 
-
 if ( ! function_exists( 'hola_elementor_scripts_styles' ) ) {
 	/**
 	 * Theme Scripts & Styles.
@@ -134,11 +133,42 @@ add_action( 'wp_enqueue_scripts', 'hola_elementor_scripts_styles' );
 
 
 /**
- * Dequeue woo styles
+ * filter woo styles
  */
-if ( get_option( 'deq-woo' ) ) {
+if ( get_option( 'no_woo_style' ) ) {
 	add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
+
+
+/**
+ * filter elementor google fonts
+ */
+if ( get_option( 'no_e_google_fonts' ) ) {
+	add_filter( 'elementor/frontend/print_google_fonts', '__return_false' );
+}
+
+
+/**
+ * filter elementor font awesome
+ */
+function hola_filter_font_awesome() {
+	if ( get_option( 'no_e_font_awesome' ) ) {
+		foreach( [ 'solid', 'regular', 'brands' ] as $style ) {
+			wp_deregister_style( 'elementor-icons-fa-' . $style );
+		}
+	}
+} add_action('elementor/frontend/after_register_styles', 'hola_filter_font_awesome', 20 );
+
+
+/**
+ * filter elementor eicons
+ */
+function hola_remove_default_stylesheet() {
+	if ( get_option( 'no_e_eicons' ) ) { 
+		wp_deregister_style( 'elementor-icons' ); 
+	}
+} add_action( 'wp_enqueue_scripts', 'hola_remove_default_stylesheet', 20 ); 
+
 
 /**
  * Permit SVG files upload
@@ -153,31 +183,30 @@ function add_file_types_to_uploads ( $file_types ) {
 }
 add_filter( 'upload_mimes', 'add_file_types_to_uploads' );
 
+
+/**
+ * Register Elementor Locations.
+ *
+ * @param ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $elementor_theme_manager theme manager.
+ *
+ * @return void
+ */
 if ( ! function_exists( 'hola_elementor_register_elementor_locations' ) ) {
-	/**
-	 * Register Elementor Locations.
-	 *
-	 * @param ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $elementor_theme_manager theme manager.
-	 *
-	 * @return void
-	 */
 	function hola_elementor_register_elementor_locations( $elementor_theme_manager ) {
 		$hook_result = apply_filters_deprecated( 'elementor_hola_theme_register_elementor_locations', [ true ], '2.0', 'hola_elementor_register_elementor_locations' );
 		if ( apply_filters( 'hola_elementor_register_elementor_locations', $hook_result ) ) {
 			$elementor_theme_manager->register_all_core_location();
 		}
 	}
-}
-add_action( 'elementor/theme/register_locations', 'hola_elementor_register_elementor_locations' );
+} add_action( 'elementor/theme/register_locations', 'hola_elementor_register_elementor_locations' );
 
 
-
+/**
+ * Set default content width.
+ *
+ * @return void
+ */
 if ( ! function_exists( 'hola_elementor_content_width' ) ) {
-	/**
-	 * Set default content width.
-	 *
-	 * @return void
-	 */
 	function hola_elementor_content_width() {
 		$defaultS['content_width'] = apply_filters( 'hola_elementor_content_width', 800 );
 	}
@@ -185,14 +214,14 @@ if ( ! function_exists( 'hola_elementor_content_width' ) ) {
 add_action( 'after_setup_theme', 'hola_elementor_content_width', 0 );
 
 
+/**
+ * Check hide title.
+ *
+ * @param bool $val default value.
+ *
+ * @return bool
+ */
 if ( ! function_exists( 'hola_elementor_check_hide_title' ) ) {
-	/**
-	 * Check hide title.
-	 *
-	 * @param bool $val default value.
-	 *
-	 * @return bool
-	 */
 	function hola_elementor_check_hide_title( $val ) {
 		if ( defined( 'ELEMENTOR_VERSION' ) ) {
 			$current_doc = \Elementor\Plugin::instance()->documents->get( get_the_ID() );

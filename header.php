@@ -25,6 +25,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php
 hola_elementor_body_open();
 
-if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
+if ( (! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) && ! get_option( 'no_header' ) ) {
 	get_template_part( 'template-parts/header' );
-}
+} 

@@ -164,10 +164,10 @@ function hola_filter_font_awesome() {
  * dequeue elementor eicons
  */
 function hola_remove_eicons() {
-	if ( get_option( 'no_e_eicons' ) ) { 
-		wp_dequeue_style( ‘elementor-icons’ ); 
+	if ( get_option( 'no_e_eicons' ) ) {
+		wp_dequeue_style( 'elementor-icons' );
 	}
-} add_action( ‘elementor/frontend/after_enqueue_styles’, 'hola_remove_eicons', 20 ); 
+} add_action( 'elementor/frontend/after_enqueue_styles', 'hola_remove_eicons', 20 ); 
 
 
 /**
